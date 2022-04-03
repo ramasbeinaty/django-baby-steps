@@ -3,13 +3,13 @@ This repository represents the first baby steps I took to learn the Django Frame
 
 ## Pip
 ```
-$ python3 -m venv djangox
+$ python3 -m venv djangenv
 
-$ source djangox/bin/activate
-(djangox) $ pip install -r requirements.txt
-(djangox) $ python manage.py migrate
-(djangox) $ python manage.py createsuperuser
-(djangox) $ python manage.py runserver
+$ source djangenv/bin/activate
+(djangenv) $ pip install -r requirements.txt
+(djangenv) $ python manage.py migrate
+(djangenv) $ python manage.py createsuperuser
+(djangenv) $ python manage.py runserver
 
 # Access the site at http://127.0.0.1:8000
 ```
@@ -19,9 +19,9 @@ $ source djangox/bin/activate
 $ pipenv install
 
 $ pipenv shell
-(djangox) $ python manage.py migrate
-(djangox) $ python manage.py createsuperuser
-(djangox) $ python manage.py runserver
+(djangenv) $ python manage.py migrate
+(djangenv) $ python manage.py createsuperuser
+(djangenv) $ python manage.py runserver
 
 # Access the site at http://127.0.0.1:8000
 ```
