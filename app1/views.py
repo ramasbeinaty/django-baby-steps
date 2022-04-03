@@ -6,6 +6,7 @@ from django.template import loader
 from django.http import HttpResponse  
 from django.views.decorators.http import require_http_methods
 from app1.forms import StudentModelForm, StudentForm, EmployeeForm
+from app1.functions.functions import handle_uploaded_file  
 
 import datetime  
   
@@ -25,8 +26,15 @@ def student_model_form(request):
     return render(request,"my_form.html",{'form':student})    
 
 def student_form(request):
-    student = StudentForm()  
-    return render(request,"my_form.html",{'form':student})  
+    if request.method == 'POST':  
+        student = StudentForm(request.POST, request.FILES)  
+        if student.is_valid():  
+            handle_uploaded_file(request.FILES['file'])  
+            return HttpResponse("File uploaded successfully") 
+
+    else:  
+        student = StudentForm()  
+        return render(request,"my_form.html",{'form':student})  
 
 def emp_form(request):  
     if request.method == "POST":  
@@ -36,13 +44,16 @@ def emp_form(request):
                 return redirect('/index')  
             except:  
                 pass  
+
     else:  
         form = EmployeeForm()  
     return render(request,'my_form.html',{'form':form})  
 
 def index(request):  
    template = loader.get_template('index.html') # getting our template  
+
    name = {  
         'student':'Rama'  
     }  
+
    return HttpResponse(template.render(name))       # rendering the template in HttpResponse  
