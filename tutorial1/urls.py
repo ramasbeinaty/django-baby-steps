@@ -23,5 +23,6 @@ urlpatterns = [
     path('now_time/', views.now_time),
     path('index/', views.index),
     path('student_model_form', views.student_model_form),
-    path('student_form', views.student_form) 
+    path('student_form', views.student_form),
+    path('emp_form', views.emp_form) 
 ]  

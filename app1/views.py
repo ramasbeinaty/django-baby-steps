@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 #importing loading from django template  
 from django.template import loader  
 
 from django.http import HttpResponse  
 from django.views.decorators.http import require_http_methods
-from app1.forms import StudentModelForm, StudentForm
+from app1.forms import StudentModelForm, StudentForm, EmployeeForm
 
 import datetime  
   
@@ -27,6 +27,18 @@ def student_model_form(request):
 def student_form(request):
     student = StudentForm()  
     return render(request,"my_form.html",{'form':student})  
+
+def emp_form(request):  
+    if request.method == "POST":  
+        form = EmployeeForm(request.POST)  
+        if form.is_valid():  
+            try:  
+                return redirect('/index')  
+            except:  
+                pass  
+    else:  
+        form = EmployeeForm()  
+    return render(request,'my_form.html',{'form':form})  
 
 def index(request):  
    template = loader.get_template('index.html') # getting our template  
