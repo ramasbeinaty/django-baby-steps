@@ -1,0 +1,14 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load static %} 
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>  
+<body>  
+<h2>Welcome to Django through INDEX route!!!</h2>  
+<h3>My name is {{student}} and I love dark chocolate</h3>
+<img src="{% static '/dark-choco.jpg' %}" alt="dark chocolate bar image" height="612px" width="612px"/>  
+</body>  
+</html>  
